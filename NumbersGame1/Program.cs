@@ -10,6 +10,29 @@ namespace NumbersGame1
     {
         static void Main(string[] args)
         {
+            StartSequence();
+
+            try
+            {
+                Console.WriteLine("You messed up, bud");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                
+            }
+            finally
+            {
+                Console.WriteLine("Mission accomoplished");
+            }
+        }
+
+        static void StartSequence()
+        {
+            Console.WriteLine("Please pick a number greater than 0: ");
+            Convert.ToInt32(Console.ReadLine());
+
+            int[] numberEntered = new int[5];
         }
     }
 }

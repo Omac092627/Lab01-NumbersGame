@@ -1,0 +1,7 @@
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\bin\Debug\NumbersGame1.exe.config
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\bin\Debug\NumbersGame1.exe
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\bin\Debug\NumbersGame1.pdb
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\obj\Debug\NumbersGame1.csprojAssemblyReference.cache
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\obj\Debug\NumbersGame1.csproj.CoreCompileInputs.cache
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\obj\Debug\NumbersGame1.exe
+C:\Users\oogun\Source\Repos\Omac092627\Lab01-NumbersGame\NumbersGame1\obj\Debug\NumbersGame1.pdb
