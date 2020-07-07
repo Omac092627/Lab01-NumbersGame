@@ -8,92 +8,132 @@ namespace NumbersGame1
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             StartSequence();
 
             try
             {
-                Console.WriteLine("You messed up, bud");
+                Console.WriteLine("Mission Accomplished");
             }
-            catch (DivideByZeroException e)
+            catch (FormatException e)
             {
                 Console.WriteLine(e.Message);
                 
             }
-            finally
+            catch(OverflowException e)
             {
-                Console.WriteLine("Mission accomoplished");
+                Console.WriteLine(e.Message);
             }
         }
 
-        static void StartSequence()
+        public static void StartSequence()
         {
 
+            try
+            {
             Console.WriteLine("Please pick a number greater than 0: ");
-            Convert.ToInt32(Console.ReadLine());
+            string answer = Console.ReadLine();  
+            int number = Convert.ToInt32(answer);
+            int[] numbers = new int[number];
+            numbers = Populate(numbers);
+            int sum = GetSum(numbers);
+            int product = GetProduct(numbers, sum);
+            decimal quotient = GetQuotient(product);
 
-            int[] numberEntered = new int[6];
-
-            Populate(numberEntered);
-            GetSum(numberEntered);
-            GetProduct(numberEntered);
+            Console.WriteLine($"Your array size is:{numbers.Length}");
+            Console.WriteLine("The numbers in the array are" + numbers); //I couldn't figure out how to display the numbers back.
+            Console.WriteLine($"The sum of the array is {sum}");
+            int chosenNumber = product/sum;
+            Console.WriteLine($"{sum} * {chosenNumber} = {product}");
+            decimal final = product / quotient;
+            Console.WriteLine($"{product} / {final} = {quotient}");
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
+                
+            }
+            catch(OverflowException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
  
 
-        static int[] Populate(int[] int1)
+        public static int[] Populate(int[] numbers)
             {
-            int[] numberEntered = new int[6];
-            int count = 0;   
 
-         for(int i = 0; i < 6; i++)
+         for(int i = 0; i < numbers.Length; i++)
             {
-                Console.WriteLine($"Please enter a random number between {count} and 6: ");
-                numberEntered[i] = Convert.ToInt32(Console.ReadLine());
-                count++;
+                Console.WriteLine($"Please enter number: {i + 1} of {numbers.Length}");
+                string answer = Console.ReadLine();
+                int num = Convert.ToInt32(answer);
+                numbers[i] = num;
             }
 
-            Console.WriteLine("You array size is 6");
-
+            return numbers;
             
-            try
-            {
+        }
 
-             for(int i = 0; i < 6; i++)
-            {
-                Console.WriteLine($"You entered {numberEntered[i]}");
-            }
-                Console.WriteLine($"Your sum is: {numberEntered.Sum()} ");
-
-
-                Console.ReadLine();
-
-            }
-
-            catch (Exception e)
-            {
-                if(numberEntered.Sum() < 20)
+        static int GetSum(int[] numbers)
+        {
+            int sum = 0;
+            for (int i = 0; i < numbers.Length; i++)
                 {
-                    Console.WriteLine($"Value of {numberEntered} is too low.(replace {numberEntered} with the actual sum of the variable)" );
-                    Console.WriteLine(e.Message);
-                    throw;
-                }
+                sum += numbers[i];
+            
             }
-            return int1;
-        }
+            if(sum < 20)
+                {
 
-        static int[] GetSum(int[] sum)
-        {
-
+                throw new Exception($"Value of {sum} is too low");
+            
+            }
             return sum;
         }
 
 
-        static int[] GetProduct(int[] sum)
+       public static int GetProduct(int[] numbers, int sum)
         {
-            return sum;
-        }
+
+            try 
+	        {	        
+            Console.WriteLine($"Please select a random number between 1 and {numbers.Length}");
+            string answer = Console.ReadLine();
+            int entered = Convert.ToInt32(answer);
+            int product = numbers[entered - 1] * sum;
+            return product;
+	        }
+	        catch (IndexOutOfRangeException e)
+	        {
+                Console.WriteLine(e.Message);
+		        throw;
+	        }
+
+            }
+
+        public static decimal GetQuotient(int product)
+            {
+            try 
+	        {	        
+		    Console.WriteLine($"Please enter a number to divide your product {product} by");
+            string answer = Console.ReadLine();
+            int number = Convert.ToInt32(answer);
+
+            decimal temporary = decimal.Divide(product, number);
+
+            return temporary;
+	        }
+
+	        catch (DivideByZeroException e)
+	        {
+            Console.WriteLine(e.Message);
+	        }
+            return 0;
+        
+            }
 }
 }
  
