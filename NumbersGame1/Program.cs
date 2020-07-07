@@ -16,7 +16,7 @@ namespace NumbersGame1
             {
                 Console.WriteLine("You messed up, bud");
             }
-            catch (Exception e)
+            catch (DivideByZeroException e)
             {
                 Console.WriteLine(e.Message);
                 
@@ -35,8 +35,9 @@ namespace NumbersGame1
 
             int[] numberEntered = new int[6];
 
-
             Populate(numberEntered);
+            GetSum(numberEntered);
+            GetProduct(numberEntered);
         }
 
  
@@ -53,23 +54,46 @@ namespace NumbersGame1
                 count++;
             }
 
-         for(int i = 0; i < 6; i++)
+            Console.WriteLine("You array size is 6");
+
+            
+            try
+            {
+
+             for(int i = 0; i < 6; i++)
             {
                 Console.WriteLine($"You entered {numberEntered[i]}");
             }
+                Console.WriteLine($"Your sum is: {numberEntered.Sum()} ");
 
-            Console.WriteLine("You array size is 6");
-            Console.ReadLine();
 
+                Console.ReadLine();
+
+            }
+
+            catch (Exception e)
+            {
+                if(numberEntered.Sum() < 20)
+                {
+                    Console.WriteLine($"Value of {numberEntered} is too low.(replace {numberEntered} with the actual sum of the variable)" );
+                    Console.WriteLine(e.Message);
+                    throw;
+                }
+            }
             return int1;
+        }
 
+        static int[] GetSum(int[] sum)
+        {
 
+            return sum;
         }
 
 
-        /*static int GetSum(int int2)
+        static int[] GetProduct(int[] sum)
         {
-
-        }*/
-    }
+            return sum;
+        }
 }
+}
+ 
